@@ -1,2 +1,2 @@
-# tic_tac_toe
+# Tic-Tac-Toe
 yet another tic-tac-toe implementation
