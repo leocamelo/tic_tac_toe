@@ -1,10 +1,5 @@
 module TicTacToe
   class Board
-    COMBINATION_ROWS = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
-      [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
-    ].freeze
-
     include Enumerable
 
     def initialize
@@ -38,13 +33,11 @@ module TicTacToe
     end
 
     def over?
-      COMBINATION_ROWS.any? do |row|
-        row.map { |c| self[c].to_s }.uniq.size == 1
-      end
+      OverChecker.new(self).call
     end
 
     def tie?
-      none?(&:empty?)
+      TieChecker.new(self).call
     end
   end
 end

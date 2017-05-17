@@ -13,7 +13,7 @@ module TicTacToe
     end
 
     def empty?
-      @value != Markers::X && @value != Markers::O
+      EmptyChecker.new(self).call
     end
 
     def value=(value)
