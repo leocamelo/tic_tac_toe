@@ -32,6 +32,10 @@ module TicTacToe
       @cells[key].value = key
     end
 
+    def available_cells
+      select(&:empty?).map(&:to_i)
+    end
+
     def over?
       OverChecker.new(self).call
     end

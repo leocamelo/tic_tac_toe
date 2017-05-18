@@ -1,6 +1,13 @@
 require_relative 'tic_tac_toe/version'
 require_relative 'tic_tac_toe/markers'
 
+require_relative 'tic_tac_toe/computer_moves/best_move'
+require_relative 'tic_tac_toe/computer_moves/random_move'
+
+require_relative 'tic_tac_toe/drivers/human_driver'
+require_relative 'tic_tac_toe/drivers/computer_driver'
+require_relative 'tic_tac_toe/player'
+
 require_relative 'tic_tac_toe/cell/empty_checker'
 require_relative 'tic_tac_toe/cell'
 
