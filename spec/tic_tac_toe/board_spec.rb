@@ -4,18 +4,41 @@ describe TicTacToe::Board do
   end
 
   describe '#to_s' do
-    let :empty_board_grid do
-      <<~HEREDOC
-         0 | 1 | 2
-        ===+===+===
-         3 | 4 | 5
-        ===+===+===
-         6 | 7 | 8
-      HEREDOC
+    context 'when board is empty' do
+      let :empty_board_grid do
+        <<~HEREDOC
+           0 | 1 | 2
+          ===+===+===
+           3 | 4 | 5
+          ===+===+===
+           6 | 7 | 8
+        HEREDOC
+      end
+
+      it 'returns an empty board grid' do
+        expect(board.to_s).to eq(empty_board_grid)
+      end
     end
 
-    it 'returns an empty board grid' do
-      expect(board.to_s).to eq(empty_board_grid)
+    context 'when board have marks' do
+      before do
+        board[2] = TicTacToe::Markers::X
+        board[4] = TicTacToe::Markers::O
+      end
+
+      let :marked_board_grid do
+        <<~HEREDOC
+           0 | 1 | X
+          ===+===+===
+           3 | O | 5
+          ===+===+===
+           6 | 7 | 8
+        HEREDOC
+      end
+
+      it 'returns the marked board grid' do
+        expect(board.to_s).to eq(marked_board_grid)
+      end
     end
   end
 
