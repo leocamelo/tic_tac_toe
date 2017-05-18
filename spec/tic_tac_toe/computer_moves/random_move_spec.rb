@@ -14,7 +14,7 @@ describe TicTacToe::ComputerMoves::RandomMove do
   describe '#call' do
     context 'when board have available cells' do
       before do
-        4.times { |n| board[n] = TicTacToe::Markers::O }
+        fill_board(board, 4, TicTacToe::Markers::O)
       end
 
       it 'verify and returns a random available cell' do
@@ -24,7 +24,7 @@ describe TicTacToe::ComputerMoves::RandomMove do
 
     context 'when board haven\'t available cells' do
       before do
-        9.times { |n| board[n] = TicTacToe::Markers::O }
+        fill_board(board, 9, TicTacToe::Markers::O)
       end
 
       it 'verify and returns nil' do

@@ -14,7 +14,7 @@ describe TicTacToe::ComputerMoves::ToOverMove do
   describe '#call' do
     context 'when board have combinations to match' do
       before do
-        2.times { |n| board[n] = TicTacToe::Markers::O }
+        fill_board(board, 2, TicTacToe::Markers::O)
       end
 
       it 'verify and returns the matched cell' do

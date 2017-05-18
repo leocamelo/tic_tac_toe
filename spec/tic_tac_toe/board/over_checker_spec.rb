@@ -10,7 +10,7 @@ describe TicTacToe::Board::OverChecker do
   describe '#call' do
     context 'when the subject board haven\'t a combination' do
       before do
-        2.times { |n| board[n] = TicTacToe::Markers::X }
+        fill_board(board, 2, TicTacToe::Markers::X)
       end
 
       it 'checks and returns false' do
@@ -20,7 +20,7 @@ describe TicTacToe::Board::OverChecker do
 
     context 'when the subject board have a combination' do
       before do
-        3.times { |n| board[n] = TicTacToe::Markers::X }
+        fill_board(board, 3, TicTacToe::Markers::X)
       end
 
       it 'checks and returns true' do

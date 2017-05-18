@@ -7,6 +7,10 @@ module SpecHelper
       def perform; 4 end
     end
   end
+
+  def fill_board(board, cells, marker)
+    cells.times { |n| board[n] = marker }
+  end
 end
 
 RSpec.configure do |config|

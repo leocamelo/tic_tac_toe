@@ -10,7 +10,7 @@ describe TicTacToe::Board::TieChecker do
   describe '#call' do
     context 'when the subject board is not fully marked' do
       before do
-        8.times { |n| board[n] = TicTacToe::Markers::X }
+        fill_board(board, 8, TicTacToe::Markers::X)
       end
 
       it 'checks and returns false' do
@@ -20,7 +20,7 @@ describe TicTacToe::Board::TieChecker do
 
     context 'when the subject board is fully marked' do
       before do
-        9.times { |n| board[n] = TicTacToe::Markers::X }
+        fill_board(board, 9, TicTacToe::Markers::X)
       end
 
       it 'checks and returns true' do
