@@ -13,8 +13,8 @@ module TicTacToe
       player2 = Player.new(@board, Markers::X, Drivers::ComputerDriver)
 
       until @board.over? || @board.tie?
-        player1.mark
-        player2.mark if !@board.over? && !@board.tie?
+        player1.mark_board!
+        player2.mark_board! if !@board.over? && !@board.tie?
         puts @board
       end
 

@@ -13,9 +13,12 @@ module TicTacToe
           best_move = nil
           @board.available_cells.each do |cell|
             if test_marker_over?(cell, @player.marker)
-              best_move = cell
-            elsif test_marker_over?(cell, enemy_marker)
-              best_move = cell
+              @board.delete_at(cell)
+              break best_move = cell
+            end
+            if test_marker_over?(cell, @player.enemy_marker)
+              @board.delete_at(cell)
+              break best_move = cell
             end
             @board.delete_at(cell)
           end
@@ -27,10 +30,6 @@ module TicTacToe
 
       def test_marker_over?(cell, marker)
         @board.tap { |b| b[cell] = marker }.over?
-      end
-
-      def enemy_marker
-        @player.marker == Markers::X ? Markers::O : Markers::X
       end
     end
   end

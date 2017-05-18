@@ -8,8 +8,15 @@ module TicTacToe
       @driver = driver.new(self)
     end
 
-    def mark
+    def mark_board!
       @board[@driver.perform] = @marker
+    end
+
+    def enemy_marker
+      case marker
+      when Markers::X then Markers::O
+      when Markers::O then Markers::X
+      end
     end
   end
 end
