@@ -7,10 +7,9 @@ module TicTacToe
     end
 
     def run
-      puts "Tic-Tac-Toe!\n\n"
+      puts "Tic-Tac-Toe!\n"
       looper.perform
-      puts @board
-      puts "\nGame over"
+      puts "#{@board}\nGame over"
     end
 
     private
