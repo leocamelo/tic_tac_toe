@@ -7,7 +7,9 @@ require_relative 'tic_tac_toe/computer_moves/random_move'
 
 require_relative 'tic_tac_toe/drivers/human_driver'
 require_relative 'tic_tac_toe/drivers/computer_driver'
+
 require_relative 'tic_tac_toe/player'
+require_relative 'tic_tac_toe/players_manager'
 
 require_relative 'tic_tac_toe/cell/empty_checker'
 require_relative 'tic_tac_toe/cell'
@@ -16,4 +18,5 @@ require_relative 'tic_tac_toe/board/over_checker'
 require_relative 'tic_tac_toe/board/tie_checker'
 require_relative 'tic_tac_toe/board'
 
+require_relative 'tic_tac_toe/looper'
 require_relative 'tic_tac_toe/game'

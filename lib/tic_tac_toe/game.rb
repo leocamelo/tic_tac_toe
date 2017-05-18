@@ -2,23 +2,21 @@ module TicTacToe
   class Game
     def initialize
       @board = Board.new
+      @player1 = Player.new(@board, Markers::O, Drivers::HumanDriver)
+      @player2 = Player.new(@board, Markers::X, Drivers::ComputerDriver)
     end
 
     def run
-      puts 'Tic-Tac-Toe!'
+      puts "Tic-Tac-Toe!\n\n"
+      looper.perform
       puts @board
-      puts 'Enter [0-8]:'
+      puts "\nGame over"
+    end
 
-      player1 = Player.new(@board, Markers::O, Drivers::HumanDriver)
-      player2 = Player.new(@board, Markers::X, Drivers::ComputerDriver)
+    private
 
-      until @board.over? || @board.tie?
-        player1.mark_board!
-        player2.mark_board! if !@board.over? && !@board.tie?
-        puts @board
-      end
-
-      puts 'Game over'
+    def looper
+      Looper.new(@board, PlayersManager.new(@player1, @player2))
     end
   end
 end

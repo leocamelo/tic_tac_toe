@@ -6,6 +6,9 @@ module TicTacToe
       end
 
       def perform
+        puts @board
+        puts "\nEnter [0-8]:"
+
         loop do
           input = gets.chomp.to_i
           break input if input_valid?(input)
