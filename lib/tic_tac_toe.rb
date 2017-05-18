@@ -1,7 +1,8 @@
 require_relative 'tic_tac_toe/version'
 require_relative 'tic_tac_toe/markers'
 
-require_relative 'tic_tac_toe/computer_moves/best_move'
+require_relative 'tic_tac_toe/computer_moves/center_move'
+require_relative 'tic_tac_toe/computer_moves/to_over_move'
 require_relative 'tic_tac_toe/computer_moves/random_move'
 
 require_relative 'tic_tac_toe/drivers/human_driver'

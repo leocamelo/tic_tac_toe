@@ -2,7 +2,8 @@ module TicTacToe
   module Drivers
     class ComputerDriver
       MOVES = [
-        ComputerMoves::BestMove,
+        ComputerMoves::CenterMove,
+        ComputerMoves::ToOverMove,
         ComputerMoves::RandomMove
       ].freeze
 
@@ -11,12 +12,12 @@ module TicTacToe
       end
 
       def perform
-        cell = nil
+        cell_to_move = nil
         MOVES.each do |move|
           res = move.new(@player).call
-          break cell = res unless res.nil?
+          break cell_to_move = res unless res.nil?
         end
-        cell
+        cell_to_move
       end
     end
   end
