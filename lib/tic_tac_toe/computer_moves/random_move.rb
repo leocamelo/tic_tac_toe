@@ -2,11 +2,11 @@ module TicTacToe
   module ComputerMoves
     class RandomMove
       def initialize(player)
-        @available_cells = player.board.available_cells
+        @board = player.board
       end
 
       def call
-        @available_cells[rand(0..@available_cells.count)]
+        @board.available_cells.sample
       end
     end
   end
