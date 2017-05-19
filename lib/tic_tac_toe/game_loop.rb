@@ -1,5 +1,5 @@
 module TicTacToe
-  class GameLooper
+  class GameLoop
     def initialize(board, players_manager)
       @board = board
       @players_manager = players_manager

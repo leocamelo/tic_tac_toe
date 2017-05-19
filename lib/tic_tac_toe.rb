@@ -18,5 +18,5 @@ require_relative 'tic_tac_toe/board/over_checker'
 require_relative 'tic_tac_toe/board/tie_checker'
 require_relative 'tic_tac_toe/board'
 
-require_relative 'tic_tac_toe/game_looper'
+require_relative 'tic_tac_toe/game_loop'
 require_relative 'tic_tac_toe/game'

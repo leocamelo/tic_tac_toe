@@ -8,14 +8,14 @@ module TicTacToe
 
     def run
       puts "Tic-Tac-Toe!\n"
-      looper.perform
+      game_loop.perform
       puts "#{@board}\nGame over"
     end
 
     private
 
-    def looper
-      GameLooper.new(@board, PlayersManager.new(@player1, @player2))
+    def game_loop
+      GameLoop.new(@board, PlayersManager.new(@player1, @player2))
     end
   end
 end
