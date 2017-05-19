@@ -6,9 +6,10 @@ module TicTacToe
       end
 
       def perform
-        puts "\n#{@board}\nEnter [0-8]:"
+        puts "\n#{@board}"
 
         loop do
+          puts "\nEnter [0-8] to mark or 'q' to quit:"
           input = validated_input
           break input unless input.nil?
         end

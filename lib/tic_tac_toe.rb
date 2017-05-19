@@ -18,6 +18,6 @@ require_relative 'tic_tac_toe/cell'
 require_relative 'tic_tac_toe/board/row_match_checker'
 require_relative 'tic_tac_toe/board'
 
-require_relative 'tic_tac_toe/players_manager'
+require_relative 'tic_tac_toe/turns_manager'
 require_relative 'tic_tac_toe/game_loop'
 require_relative 'tic_tac_toe/game'

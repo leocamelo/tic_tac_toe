@@ -1,4 +1,4 @@
-describe TicTacToe::PlayersManager do
+describe TicTacToe::TurnsManager do
   let :board do
     TicTacToe::Board.new
   end
@@ -11,15 +11,15 @@ describe TicTacToe::PlayersManager do
     TicTacToe::Player.new(board, TicTacToe::Markers::O, driver_double)
   end
 
-  let :player_manager do
-    TicTacToe::PlayersManager.new(player1, player2)
+  let :turns_manager do
+    TicTacToe::TurnsManager.new(player1, player2)
   end
 
   describe '#current_player' do
     it 'returns the current player, starting on player1 and switching' do
-      expect(player_manager.current_player).to eq(player1)
-      expect(player_manager.current_player).to eq(player2)
-      expect(player_manager.current_player).to eq(player1)
+      expect(turns_manager.current_player).to eq(player1)
+      expect(turns_manager.current_player).to eq(player2)
+      expect(turns_manager.current_player).to eq(player1)
     end
   end
 end

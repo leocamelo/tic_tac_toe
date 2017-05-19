@@ -1,5 +1,5 @@
 module TicTacToe
-  class PlayersManager
+  class TurnsManager
     def initialize(player1, player2)
       @player1 = @current_player = player1
       @player2 = player2
