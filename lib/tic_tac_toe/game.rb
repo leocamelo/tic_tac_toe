@@ -15,7 +15,7 @@ module TicTacToe
     private
 
     def game_loop
-      GameLoop.new(@board, PlayersManager.new(@player1, @player2))
+      GameLoop.new(@board, @player1, @player2)
     end
   end
 end

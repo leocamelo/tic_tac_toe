@@ -13,8 +13,7 @@ require_relative 'tic_tac_toe/player'
 require_relative 'tic_tac_toe/cell/empty_checker'
 require_relative 'tic_tac_toe/cell'
 
-require_relative 'tic_tac_toe/board/over_checker'
-require_relative 'tic_tac_toe/board/tie_checker'
+require_relative 'tic_tac_toe/board/row_match_checker'
 require_relative 'tic_tac_toe/board'
 
 require_relative 'tic_tac_toe/players_manager'

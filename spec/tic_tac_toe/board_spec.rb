@@ -78,25 +78,36 @@ describe TicTacToe::Board do
     end
   end
 
-  describe '#over?' do
-    let :over_checker do
-      TicTacToe::Board::OverChecker
+  describe '#full?' do
+    context 'when the board is not fully marked' do
+      before do
+        fill_board(board, 8, TicTacToe::Markers::X)
+      end
+
+      it 'checks and returns false' do
+        expect(board.full?).to eq(false)
+      end
     end
 
-    it 'calls the OverChecker class' do
-      expect_any_instance_of(over_checker).to receive(:call).once
-      board.over?
+    context 'when the board is fully marked' do
+      before do
+        fill_board(board, 9, TicTacToe::Markers::X)
+      end
+
+      it 'checks and returns true' do
+        expect(board.full?).to eq(true)
+      end
     end
   end
 
-  describe '#tie?' do
-    let :tie_checker do
-      TicTacToe::Board::TieChecker
+  describe '#row_match?' do
+    let :row_match_checker do
+      TicTacToe::Board::RowMatchChecker
     end
 
-    it 'calls the TieChecker class' do
-      expect_any_instance_of(tie_checker).to receive(:call).once
-      board.tie?
+    it 'calls the RowMatchChecker class' do
+      expect_any_instance_of(row_match_checker).to receive(:call).once
+      board.row_match?
     end
   end
 end

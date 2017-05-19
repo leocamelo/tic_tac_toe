@@ -36,12 +36,12 @@ module TicTacToe
       select(&:empty?).map(&:to_i)
     end
 
-    def over?
-      Board::OverChecker.new(self).call
+    def full?
+      none?(&:empty?)
     end
 
-    def tie?
-      Board::TieChecker.new(self).call
+    def row_match?
+      Board::RowMatchChecker.new(self).call
     end
   end
 end

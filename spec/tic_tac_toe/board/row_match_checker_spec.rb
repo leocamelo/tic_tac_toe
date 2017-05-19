@@ -1,10 +1,10 @@
-describe TicTacToe::Board::OverChecker do
+describe TicTacToe::Board::RowMatchChecker do
   let :board do
     TicTacToe::Board.new
   end
 
-  let :over_checker do
-    TicTacToe::Board::OverChecker.new(board)
+  let :row_match_checker do
+    TicTacToe::Board::RowMatchChecker.new(board)
   end
 
   describe '#call' do
@@ -14,7 +14,7 @@ describe TicTacToe::Board::OverChecker do
       end
 
       it 'checks and returns false' do
-        expect(over_checker.call).to eq(false)
+        expect(row_match_checker.call).to eq(false)
       end
     end
 
@@ -24,7 +24,7 @@ describe TicTacToe::Board::OverChecker do
       end
 
       it 'checks and returns true' do
-        expect(over_checker.call).to eq(true)
+        expect(row_match_checker.call).to eq(true)
       end
     end
   end
