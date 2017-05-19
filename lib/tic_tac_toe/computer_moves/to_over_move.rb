@@ -12,7 +12,6 @@ module TicTacToe
         @board.available_cells.each do |cell|
           break cell_to_move = cell if test_over(cell, @player_marker)
           break cell_to_move = cell if test_over(cell, @enemy_marker)
-          @board.delete_at(cell)
         end
         cell_to_move
       end
