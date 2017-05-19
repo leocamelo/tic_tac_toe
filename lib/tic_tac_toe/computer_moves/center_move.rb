@@ -1,8 +1,8 @@
 module TicTacToe
   module ComputerMoves
     class CenterMove
-      def initialize(player)
-        @board = player.board
+      def initialize(env)
+        @board = env.board
       end
 
       def call

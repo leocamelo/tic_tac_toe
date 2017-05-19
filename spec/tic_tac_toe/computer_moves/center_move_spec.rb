@@ -3,12 +3,12 @@ describe TicTacToe::ComputerMoves::CenterMove do
     TicTacToe::Board.new
   end
 
-  let :player do
-    TicTacToe::Player.new(board, TicTacToe::Markers::X, driver_double)
+  let :driver_env do
+    TicTacToe::Player::DriverEnv.new(board, TicTacToe::Markers::X)
   end
 
   let :center_move do
-    TicTacToe::ComputerMoves::CenterMove.new(player)
+    TicTacToe::ComputerMoves::CenterMove.new(driver_env)
   end
 
   describe '#call' do

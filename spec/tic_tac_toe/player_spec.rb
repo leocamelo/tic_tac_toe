@@ -13,13 +13,7 @@ describe TicTacToe::Player do
     end
 
     it 'performs the driver and mark a cell on board' do
-      expect(board[4].to_s).to eq(TicTacToe::Markers::X)
-    end
-  end
-
-  describe '#enemy_marker' do
-    it 'returns the opposite marker' do
-      expect(player.enemy_marker).to eq(TicTacToe::Markers::O)
+      expect(board[0].to_s).to eq(TicTacToe::Markers::X)
     end
   end
 end

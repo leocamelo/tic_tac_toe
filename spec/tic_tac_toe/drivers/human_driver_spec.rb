@@ -3,12 +3,12 @@ describe TicTacToe::Drivers::HumanDriver do
     TicTacToe::Board.new
   end
 
-  let :player do
-    TicTacToe::Player.new(board, TicTacToe::Markers::X, driver_double)
+  let :driver_env do
+    TicTacToe::Player::DriverEnv.new(board, TicTacToe::Markers::X)
   end
 
   let :human_driver do
-    TicTacToe::Drivers::HumanDriver.new(player)
+    TicTacToe::Drivers::HumanDriver.new(driver_env)
   end
 
   before do

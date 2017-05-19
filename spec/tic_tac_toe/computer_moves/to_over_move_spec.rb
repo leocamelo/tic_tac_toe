@@ -3,12 +3,12 @@ describe TicTacToe::ComputerMoves::ToOverMove do
     TicTacToe::Board.new
   end
 
-  let :player do
-    TicTacToe::Player.new(board, TicTacToe::Markers::X, driver_double)
+  let :driver_env do
+    TicTacToe::Player::DriverEnv.new(board, TicTacToe::Markers::X)
   end
 
   let :to_over_move do
-    TicTacToe::ComputerMoves::ToOverMove.new(player)
+    TicTacToe::ComputerMoves::ToOverMove.new(driver_env)
   end
 
   describe '#call' do

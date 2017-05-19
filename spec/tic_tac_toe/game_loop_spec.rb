@@ -3,20 +3,12 @@ describe TicTacToe::GameLoop do
     TicTacToe::Board.new
   end
 
-  let :sequence_driver do
-    Struct.new(:player) do
-      def perform
-        player.board.available_cells.first
-      end
-    end
-  end
-
   let :player1 do
-    TicTacToe::Player.new(board, TicTacToe::Markers::X, sequence_driver)
+    TicTacToe::Player.new(board, TicTacToe::Markers::X, driver_double)
   end
 
   let :player2 do
-    TicTacToe::Player.new(board, TicTacToe::Markers::O, sequence_driver)
+    TicTacToe::Player.new(board, TicTacToe::Markers::O, driver_double)
   end
 
   let :players_manager do

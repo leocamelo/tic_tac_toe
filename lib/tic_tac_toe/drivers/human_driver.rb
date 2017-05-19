@@ -1,8 +1,8 @@
 module TicTacToe
   module Drivers
     class HumanDriver
-      def initialize(player)
-        @board = player.board
+      def initialize(env)
+        @board = env.board
       end
 
       def perform

@@ -1,10 +1,10 @@
 module TicTacToe
   module ComputerMoves
     class ToOverMove
-      def initialize(player)
-        @board = player.board
-        @player_marker = player.marker
-        @enemy_marker = player.enemy_marker
+      def initialize(env)
+        @board = env.board
+        @player_marker = env.player_marker
+        @enemy_marker = env.enemy_marker
       end
 
       def call

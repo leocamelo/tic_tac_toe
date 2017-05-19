@@ -1,22 +1,19 @@
 module TicTacToe
   class Player
-    attr_reader :board, :marker
-
     def initialize(board, marker, driver)
       @board = board
       @marker = marker
-      @driver = driver.new(self)
+      @driver = driver.new(driver_env)
     end
 
     def mark_board!
       @board[@driver.perform] = @marker
     end
 
-    def enemy_marker
-      case marker
-      when Markers::X then Markers::O
-      when Markers::O then Markers::X
-      end
+    private
+
+    def driver_env
+      DriverEnv.new(@board, @marker)
     end
   end
 end

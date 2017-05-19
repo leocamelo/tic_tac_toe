@@ -3,9 +3,9 @@ require './lib/tic_tac_toe'
 
 module SpecHelper
   def driver_double
-    Struct.new(:player) do
+    Struct.new(:env) do
       def perform
-        4
+        env.board.available_cells.first
       end
     end
   end
