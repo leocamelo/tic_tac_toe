@@ -9,7 +9,7 @@ module TicTacToe
         puts "\n#{@board}\nEnter [0-8]:"
 
         loop do
-          input = gets.chomp.to_i
+          input = gets(chomp: true).to_i
           break input if input_valid?(input)
         end
       end
