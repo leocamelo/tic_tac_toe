@@ -9,15 +9,15 @@ module TicTacToe
         puts "\n#{@board}\nEnter [0-8]:"
 
         loop do
-          input = gets(chomp: true).to_i
-          break input if input_valid?(input)
+          input = validated_input
+          break input unless input.nil?
         end
       end
 
       private
 
-      def input_valid?(input)
-        @board[input] && @board[input].empty?
+      def validated_input
+        self.class::InputValidator.new(gets(chomp: true), @board).call
       end
     end
   end
