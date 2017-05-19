@@ -8,7 +8,12 @@ module TicTacToe
     def perform
       loop do
         break if game_over?
-        @turns_manager.current_player.mark_board!
+
+        current_player = @turns_manager.current_player
+        current_player.perform_driver!
+
+        break if current_player.gived_up?
+        current_player.mark_board!
       end
     end
 
