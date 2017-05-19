@@ -13,8 +13,11 @@ describe TicTacToe::Drivers::ComputerDriver do
 
   describe '#perform' do
     context 'when the board\'s center cell is empty' do
+      let :move do
+        TicTacToe::Drivers::ComputerDriver::CenterMove
+      end
+
       before do
-        move = TicTacToe::ComputerMoves::CenterMove
         allow_any_instance_of(move).to receive(:call).and_return('Center!')
       end
 
@@ -29,9 +32,12 @@ describe TicTacToe::Drivers::ComputerDriver do
       end
 
       context 'when board have combinations to match' do
+        let :move do
+          TicTacToe::Drivers::ComputerDriver::ToOverMove
+        end
+
         before do
           board[3] = TicTacToe::Markers::O
-          move = TicTacToe::ComputerMoves::ToOverMove
           allow_any_instance_of(move).to receive(:call).and_return('ToOver!')
         end
 
@@ -42,8 +48,11 @@ describe TicTacToe::Drivers::ComputerDriver do
 
       context 'when board haven\'t combinations to match' do
         context 'when board have available cells' do
+          let :move do
+            TicTacToe::Drivers::ComputerDriver::RandomMove
+          end
+
           before do
-            move = TicTacToe::ComputerMoves::RandomMove
             allow_any_instance_of(move).to receive(:call).and_return('Random!')
           end
 

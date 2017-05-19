@@ -1,11 +1,7 @@
 module TicTacToe
   module Drivers
     class ComputerDriver
-      MOVES = [
-        ComputerMoves::CenterMove,
-        ComputerMoves::ToOverMove,
-        ComputerMoves::RandomMove
-      ].freeze
+      MOVES = [CenterMove, ToOverMove, RandomMove].freeze
 
       def initialize(env)
         @env = env

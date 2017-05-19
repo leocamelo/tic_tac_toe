@@ -1,4 +1,4 @@
-describe TicTacToe::ComputerMoves::CenterMove do
+describe TicTacToe::Drivers::ComputerDriver::CenterMove do
   let :board do
     TicTacToe::Board.new
   end
@@ -8,7 +8,7 @@ describe TicTacToe::ComputerMoves::CenterMove do
   end
 
   let :center_move do
-    TicTacToe::ComputerMoves::CenterMove.new(driver_env)
+    TicTacToe::Drivers::ComputerDriver::CenterMove.new(driver_env)
   end
 
   describe '#call' do

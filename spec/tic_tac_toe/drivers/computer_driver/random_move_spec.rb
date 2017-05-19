@@ -1,4 +1,4 @@
-describe TicTacToe::ComputerMoves::RandomMove do
+describe TicTacToe::Drivers::ComputerDriver::RandomMove do
   let :board do
     TicTacToe::Board.new
   end
@@ -8,7 +8,7 @@ describe TicTacToe::ComputerMoves::RandomMove do
   end
 
   let :random_move do
-    TicTacToe::ComputerMoves::RandomMove.new(driver_env)
+    TicTacToe::Drivers::ComputerDriver::RandomMove.new(driver_env)
   end
 
   describe '#call' do

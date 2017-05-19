@@ -1,4 +1,4 @@
-describe TicTacToe::ComputerMoves::ToOverMove do
+describe TicTacToe::Drivers::ComputerDriver::ToOverMove do
   let :board do
     TicTacToe::Board.new
   end
@@ -8,7 +8,7 @@ describe TicTacToe::ComputerMoves::ToOverMove do
   end
 
   let :to_over_move do
-    TicTacToe::ComputerMoves::ToOverMove.new(driver_env)
+    TicTacToe::Drivers::ComputerDriver::ToOverMove.new(driver_env)
   end
 
   describe '#call' do
