@@ -37,11 +37,11 @@ module TicTacToe
     end
 
     def over?
-      OverChecker.new(self).call
+      Board::OverChecker.new(self).call
     end
 
     def tie?
-      TieChecker.new(self).call
+      Board::TieChecker.new(self).call
     end
   end
 end

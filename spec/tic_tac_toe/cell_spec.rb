@@ -24,4 +24,15 @@ describe TicTacToe::Cell do
       expect(cell.to_s).to eq('7')
     end
   end
+
+  describe '#empty?' do
+    let :empty_checker do
+      TicTacToe::Cell::EmptyChecker
+    end
+
+    it 'calls the EmptyChecker class' do
+      expect_any_instance_of(empty_checker).to receive(:call).once
+      cell.empty?
+    end
+  end
 end

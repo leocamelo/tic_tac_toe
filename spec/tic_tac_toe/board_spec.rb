@@ -77,4 +77,26 @@ describe TicTacToe::Board do
       expect(board.available_cells).to eq([0, 1, 2, 3, 5, 6, 7, 8])
     end
   end
+
+  describe '#over?' do
+    let :over_checker do
+      TicTacToe::Board::OverChecker
+    end
+
+    it 'calls the OverChecker class' do
+      expect_any_instance_of(over_checker).to receive(:call).once
+      board.over?
+    end
+  end
+
+  describe '#tie?' do
+    let :tie_checker do
+      TicTacToe::Board::TieChecker
+    end
+
+    it 'calls the TieChecker class' do
+      expect_any_instance_of(tie_checker).to receive(:call).once
+      board.tie?
+    end
+  end
 end

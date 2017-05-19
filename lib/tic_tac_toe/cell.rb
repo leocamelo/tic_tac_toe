@@ -12,12 +12,12 @@ module TicTacToe
       @value.to_i
     end
 
-    def empty?
-      EmptyChecker.new(self).call
-    end
-
     def value=(value)
       @value = value.to_s
+    end
+
+    def empty?
+      Cell::EmptyChecker.new(self).call
     end
   end
 end

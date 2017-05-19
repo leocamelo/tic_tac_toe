@@ -13,7 +13,7 @@ module TicTacToe
     private
 
     def driver_env
-      DriverEnv.new(@board, @marker)
+      Player::DriverEnv.new(@board, @marker)
     end
   end
 end
