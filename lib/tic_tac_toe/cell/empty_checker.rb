@@ -6,7 +6,7 @@ module TicTacToe
       end
 
       def call
-        ![Markers::X, Markers::O].include?(@cell.to_s)
+        ![Markers::X, Markers::O].include?(@cell.value)
       end
     end
   end

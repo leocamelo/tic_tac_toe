@@ -12,7 +12,7 @@ module TicTacToe
 
       def call
         ROWS.any? do |row|
-          row.map { |c| @board[c].to_s }.uniq.size == 1
+          row.map { |c| @board[c].value }.uniq.size == 1
         end
       end
     end

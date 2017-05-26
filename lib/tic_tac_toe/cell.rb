@@ -1,11 +1,9 @@
 module TicTacToe
   class Cell
+    attr_reader :value
+
     def initialize(value)
       self.value = value
-    end
-
-    def to_s
-      @value
     end
 
     def to_i

@@ -15,7 +15,7 @@ describe TicTacToe::Player do
       end
 
       it 'mark a cell on board' do
-        expect(board[0].to_s).to eq(TicTacToe::Markers::X)
+        expect(board[0].value).to eq(TicTacToe::Markers::X)
       end
     end
 

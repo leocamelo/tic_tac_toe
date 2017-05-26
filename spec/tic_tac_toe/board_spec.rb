@@ -43,8 +43,8 @@ describe TicTacToe::Board do
   end
 
   describe '#[]' do
-    it 'returns the referred cell value' do
-      8.times { |n| expect(board[n].to_s).to eq(n.to_s) }
+    it 'returns the referred cell' do
+      8.times { |n| expect(board[n].value).to eq(n.to_s) }
     end
   end
 
@@ -54,7 +54,7 @@ describe TicTacToe::Board do
     end
 
     it 'change the value of a referred cell' do
-      expect(board[4].to_s).to eq(TicTacToe::Markers::X)
+      expect(board[4].value).to eq(TicTacToe::Markers::X)
     end
   end
 
