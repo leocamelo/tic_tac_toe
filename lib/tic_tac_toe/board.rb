@@ -33,7 +33,7 @@ module TicTacToe
     end
 
     def available_cells
-      select(&:empty?).map(&:to_i)
+      select(&:empty?).map { |c| c.value.to_i }
     end
 
     def full?

@@ -3,12 +3,6 @@ describe TicTacToe::Cell do
     TicTacToe::Cell.new(4)
   end
 
-  describe '#to_i' do
-    it 'returns the cell\'s value on integer format' do
-      expect(cell.to_i).to eq(4)
-    end
-  end
-
   describe '#value=' do
     before do
       cell.value = 7

@@ -6,10 +6,6 @@ module TicTacToe
       self.value = value
     end
 
-    def to_i
-      @value.to_i
-    end
-
     def value=(value)
       @value = value.to_s
     end
