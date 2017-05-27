@@ -7,7 +7,7 @@ module TicTacToe
         end
 
         def call
-          4 if @board[4].empty?
+          4 if @board.cells[4].empty?
         end
       end
     end

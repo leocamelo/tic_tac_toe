@@ -4,7 +4,7 @@ module TicTacToe
       class InputValidator
         def initialize(input, board)
           @input = input
-          @board = board
+          @cells = board.cells
         end
 
         def call
@@ -24,7 +24,7 @@ module TicTacToe
         end
 
         def input_on_board?(input)
-          @board[input] && @board[input].empty?
+          @cells[input] && @cells[input].empty?
         end
       end
     end

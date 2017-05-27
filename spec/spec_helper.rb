@@ -11,7 +11,7 @@ module SpecHelper
   end
 
   def fill_board(board, cells, marker)
-    cells.times { |n| board[n] = marker }
+    cells.times { |n| board.cells[n].value = marker }
   end
 end
 

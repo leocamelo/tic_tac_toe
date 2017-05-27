@@ -15,7 +15,7 @@ describe TicTacToe::Player do
       end
 
       it 'mark a cell on board' do
-        expect(board[0].value).to eq(TicTacToe::Markers::X)
+        expect(board.cells[0].value).to eq(TicTacToe::Markers::X)
       end
     end
 
@@ -25,7 +25,7 @@ describe TicTacToe::Player do
       end
 
       it 'dont mark any cell on board' do
-        expect(board).to all(be_empty)
+        expect(board.cells).to all(be_empty)
       end
     end
   end

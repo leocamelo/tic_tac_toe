@@ -22,7 +22,7 @@ module TicTacToe
 
     def mark_board!
       return if @next_play.nil?
-      @board[@next_play] = @marker
+      @board.cells[@next_play].value = @marker
       @next_play = nil
     end
 

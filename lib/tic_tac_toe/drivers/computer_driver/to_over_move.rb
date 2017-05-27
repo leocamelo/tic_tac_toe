@@ -20,8 +20,8 @@ module TicTacToe
         private
 
         def test_row_match(cell, marker)
-          row_match = @board.tap { |b| b[cell] = marker }.row_match?
-          @board.delete_at(cell)
+          row_match = @board.tap { |b| b.cells[cell].value = marker }.row_match?
+          @board.empty_cell_at(cell)
           row_match
         end
       end

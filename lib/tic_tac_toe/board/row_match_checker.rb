@@ -7,12 +7,12 @@ module TicTacToe
       ].freeze
 
       def initialize(board)
-        @board = board
+        @cells = board.cells
       end
 
       def call
         ROWS.any? do |row|
-          row.map { |c| @board[c].value }.uniq.size == 1
+          row.map { |c| @cells[c].value }.uniq.size == 1
         end
       end
     end

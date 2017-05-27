@@ -1,6 +1,6 @@
 module TicTacToe
   class Board
-    include Enumerable
+    attr_reader :cells
 
     def initialize
       @cells = Array.new(9) { |n| Cell.new(n) }.freeze
@@ -16,28 +16,16 @@ module TicTacToe
       HEREDOC
     end
 
-    def each(&block)
-      @cells.each(&block)
-    end
-
-    def [](key)
-      @cells[key]
-    end
-
-    def []=(key, value)
-      @cells[key].value = value
-    end
-
-    def delete_at(key)
+    def empty_cell_at(key)
       @cells[key].value = key
     end
 
     def available_cells
-      select(&:empty?).map { |c| c.value.to_i }
+      @cells.select(&:empty?).map { |c| c.value.to_i }
     end
 
     def full?
-      none?(&:empty?)
+      @cells.none?(&:empty?)
     end
 
     def row_match?

@@ -22,8 +22,8 @@ describe TicTacToe::Board do
 
     context 'when board have marks' do
       before do
-        board[2] = TicTacToe::Markers::X
-        board[4] = TicTacToe::Markers::O
+        board.cells[2].value = TicTacToe::Markers::X
+        board.cells[4].value = TicTacToe::Markers::O
       end
 
       let :marked_board_cells_grid do
@@ -42,35 +42,20 @@ describe TicTacToe::Board do
     end
   end
 
-  describe '#[]' do
-    it 'returns the referred cell' do
-      8.times { |n| expect(board[n].value).to eq(n.to_s) }
-    end
-  end
-
-  describe '#[]=' do
+  describe '#empty_cell_at' do
     before do
-      board[4] = TicTacToe::Markers::X
-    end
-
-    it 'change the value of a referred cell' do
-      expect(board[4].value).to eq(TicTacToe::Markers::X)
-    end
-  end
-
-  describe '#delete_at' do
-    before do
-      board.tap { |b| b[4] = TicTacToe::Markers::X }.delete_at(4)
+      board.cells[4].value = TicTacToe::Markers::X
+      board.empty_cell_at(4)
     end
 
     it 'return back the referred cell to empty value' do
-      expect(board[4]).to be_empty
+      expect(board.cells[4]).to be_empty
     end
   end
 
   describe '#available_cells' do
     before do
-      board[4] = TicTacToe::Markers::X
+      board.cells[4].value = TicTacToe::Markers::X
     end
 
     it 'returns all empty cells indexes' do

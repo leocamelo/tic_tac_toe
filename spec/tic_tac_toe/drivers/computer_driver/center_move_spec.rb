@@ -20,7 +20,7 @@ describe TicTacToe::Drivers::ComputerDriver::CenterMove do
 
     context 'when board\'s center cell is not empty' do
       before do
-        board[4] = TicTacToe::Markers::O
+        board.cells[4].value = TicTacToe::Markers::O
       end
 
       it 'verify and returns nil' do

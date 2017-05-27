@@ -28,7 +28,7 @@ describe TicTacToe::Drivers::ComputerDriver do
 
     context 'when the board\'s center cell is not empty' do
       before do
-        board[4] = TicTacToe::Markers::O
+        board.cells[4].value = TicTacToe::Markers::O
       end
 
       context 'when board have combinations to match' do
@@ -37,7 +37,7 @@ describe TicTacToe::Drivers::ComputerDriver do
         end
 
         before do
-          board[3] = TicTacToe::Markers::O
+          board.cells[3].value = TicTacToe::Markers::O
           allow_any_instance_of(move).to receive(:call).and_return('ToOver!')
         end
 
