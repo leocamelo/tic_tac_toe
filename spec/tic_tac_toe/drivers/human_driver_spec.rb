@@ -21,7 +21,7 @@ describe TicTacToe::Drivers::HumanDriver do
     end
 
     it 'prints the board' do
-      expect { human_driver.perform }.to output(/#{board}/).to_stdout
+      expect { human_driver.perform }.to output(/#{board.cells_grid}/).to_stdout
     end
 
     it 'prints instructions' do

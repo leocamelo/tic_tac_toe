@@ -6,7 +6,7 @@ module TicTacToe
       @cells = Array.new(9) { |n| Cell.new(n) }.freeze
     end
 
-    def to_s
+    def cells_grid
       <<~HEREDOC
          #{@cells[0].value} | #{@cells[1].value} | #{@cells[2].value}
         ===+===+===

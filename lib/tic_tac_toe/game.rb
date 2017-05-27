@@ -9,7 +9,7 @@ module TicTacToe
     def run
       puts "Tic-Tac-Toe!\n"
       game_loop.perform
-      puts "\n#{@board}\nGame over"
+      puts "\n#{@board.cells_grid}\nGame over"
     end
 
     private
