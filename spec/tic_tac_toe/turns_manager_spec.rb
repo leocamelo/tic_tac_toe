@@ -12,7 +12,7 @@ describe TicTacToe::TurnsManager do
   end
 
   let :turns_manager do
-    TicTacToe::TurnsManager.new(player1, player2)
+    described_class.new(player1, player2)
   end
 
   describe '#current_player' do

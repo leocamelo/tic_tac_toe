@@ -4,7 +4,7 @@ describe TicTacToe::Board::RowMatchChecker do
   end
 
   let :row_match_checker do
-    TicTacToe::Board::RowMatchChecker.new(board)
+    described_class.new(board)
   end
 
   describe '#call' do

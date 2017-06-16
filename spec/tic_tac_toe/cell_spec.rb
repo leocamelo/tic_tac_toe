@@ -1,6 +1,6 @@
 describe TicTacToe::Cell do
   let :cell do
-    TicTacToe::Cell.new(4)
+    described_class.new(4)
   end
 
   describe '#value=' do
@@ -15,7 +15,7 @@ describe TicTacToe::Cell do
 
   describe '#empty?' do
     let :empty_checker do
-      TicTacToe::Cell::EmptyChecker
+      described_class::EmptyChecker
     end
 
     it 'calls the EmptyChecker class' do

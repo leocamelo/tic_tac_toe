@@ -1,6 +1,6 @@
 describe TicTacToe::Board do
   let :board do
-    TicTacToe::Board.new
+    described_class.new
   end
 
   describe '#cells_grid' do
@@ -87,7 +87,7 @@ describe TicTacToe::Board do
 
   describe '#row_match?' do
     let :row_match_checker do
-      TicTacToe::Board::RowMatchChecker
+      described_class::RowMatchChecker
     end
 
     it 'calls the RowMatchChecker class' do

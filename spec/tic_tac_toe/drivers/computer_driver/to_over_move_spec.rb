@@ -8,7 +8,7 @@ describe TicTacToe::Drivers::ComputerDriver::ToOverMove do
   end
 
   let :to_over_move do
-    TicTacToe::Drivers::ComputerDriver::ToOverMove.new(driver_env)
+    described_class.new(driver_env)
   end
 
   describe '#call' do

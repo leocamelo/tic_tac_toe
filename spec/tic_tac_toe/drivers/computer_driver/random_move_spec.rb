@@ -8,7 +8,7 @@ describe TicTacToe::Drivers::ComputerDriver::RandomMove do
   end
 
   let :random_move do
-    TicTacToe::Drivers::ComputerDriver::RandomMove.new(driver_env)
+    described_class.new(driver_env)
   end
 
   describe '#call' do

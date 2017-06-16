@@ -1,6 +1,6 @@
 describe TicTacToe::Game do
   let :game do
-    TicTacToe::Game.new
+    described_class.new
   end
 
   describe '#run' do

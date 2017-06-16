@@ -8,7 +8,7 @@ describe TicTacToe::Drivers::HumanDriver do
   end
 
   let :human_driver do
-    TicTacToe::Drivers::HumanDriver.new(driver_env)
+    described_class.new(driver_env)
   end
 
   before do

@@ -8,13 +8,13 @@ describe TicTacToe::Drivers::ComputerDriver do
   end
 
   let :computer_driver do
-    TicTacToe::Drivers::ComputerDriver.new(driver_env)
+    described_class.new(driver_env)
   end
 
   describe '#perform' do
     context 'when the board\'s center cell is empty' do
       let :move do
-        TicTacToe::Drivers::ComputerDriver::CenterMove
+        described_class::CenterMove
       end
 
       before do
@@ -33,7 +33,7 @@ describe TicTacToe::Drivers::ComputerDriver do
 
       context 'when board have combinations to match' do
         let :move do
-          TicTacToe::Drivers::ComputerDriver::ToOverMove
+          described_class::ToOverMove
         end
 
         before do
@@ -49,7 +49,7 @@ describe TicTacToe::Drivers::ComputerDriver do
       context 'when board haven\'t combinations to match' do
         context 'when board have available cells' do
           let :move do
-            TicTacToe::Drivers::ComputerDriver::RandomMove
+            described_class::RandomMove
           end
 
           before do

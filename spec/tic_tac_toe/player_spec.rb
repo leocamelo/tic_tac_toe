@@ -4,7 +4,7 @@ describe TicTacToe::Player do
   end
 
   let :player do
-    TicTacToe::Player.new(board, TicTacToe::Markers::X, driver_double)
+    described_class.new(board, TicTacToe::Markers::X, driver_double)
   end
 
   describe '#mark_board!' do

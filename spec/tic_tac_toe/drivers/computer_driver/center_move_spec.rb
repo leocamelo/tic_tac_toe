@@ -8,7 +8,7 @@ describe TicTacToe::Drivers::ComputerDriver::CenterMove do
   end
 
   let :center_move do
-    TicTacToe::Drivers::ComputerDriver::CenterMove.new(driver_env)
+    described_class.new(driver_env)
   end
 
   describe '#call' do

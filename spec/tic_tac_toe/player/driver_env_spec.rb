@@ -4,7 +4,7 @@ describe TicTacToe::Player::DriverEnv do
   end
 
   let :driver_env do
-    TicTacToe::Player::DriverEnv.new(board, TicTacToe::Markers::X)
+    described_class.new(board, TicTacToe::Markers::X)
   end
 
   describe '#enemy_marker' do

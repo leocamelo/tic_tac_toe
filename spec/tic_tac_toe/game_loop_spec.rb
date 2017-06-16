@@ -12,7 +12,7 @@ describe TicTacToe::GameLoop do
   end
 
   let :game_loop do
-    TicTacToe::GameLoop.new(board, player1, player2)
+    described_class.new(board, player1, player2)
   end
 
   describe '#perform' do
