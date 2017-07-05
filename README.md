@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/leocamelo/tic_tac_toe.svg?branch=master)](https://travis-ci.org/leocamelo/tic_tac_toe)
 
-Yet another tic-tac-toe implementation
+Yet another tic-tac-toe implementation.
 
 ## Requirements
 
@@ -11,7 +11,7 @@ Yet another tic-tac-toe implementation
 ## How to play
 
 ```bash
-$ git glone https://github.com/leocamelo/tic_tac_toe.git
+$ git clone https://github.com/leocamelo/tic_tac_toe.git
 $ cd tic_tac_toe
 $ bin/tic_tac_toe
 ```
