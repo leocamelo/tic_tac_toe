@@ -6,13 +6,13 @@ describe TicTacToe::Board do
   describe '#cells_grid' do
     context 'when board is empty' do
       let :empty_board_cells_grid do
-        <<~HEREDOC
+        <<~EOT
            0 | 1 | 2
           ===+===+===
            3 | 4 | 5
           ===+===+===
            6 | 7 | 8
-        HEREDOC
+        EOT
       end
 
       it 'returns an empty board grid' do
@@ -27,13 +27,13 @@ describe TicTacToe::Board do
       end
 
       let :marked_board_cells_grid do
-        <<~HEREDOC
+        <<~EOT
            0 | 1 | X
           ===+===+===
            3 | O | 5
           ===+===+===
            6 | 7 | 8
-        HEREDOC
+        EOT
       end
 
       it 'returns the marked board grid' do

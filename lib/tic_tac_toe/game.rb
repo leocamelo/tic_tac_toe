@@ -7,15 +7,9 @@ module TicTacToe
     end
 
     def run
-      puts "Tic-Tac-Toe! (v#{TicTacToe::VERSION})\n"
-      game_loop.perform
+      puts "Tic-Tac-Toe! (v#{VERSION})\n"
+      GameLoop.new(@board, @player1, @player2).perform
       puts "\n#{@board.cells_grid}\nGame over"
-    end
-
-    private
-
-    def game_loop
-      GameLoop.new(@board, @player1, @player2)
     end
   end
 end
