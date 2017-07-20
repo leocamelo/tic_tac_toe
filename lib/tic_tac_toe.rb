@@ -1,5 +1,6 @@
 require_relative 'tic_tac_toe/version'
 require_relative 'tic_tac_toe/markers'
+require_relative 'tic_tac_toe/in_out'
 
 require_relative 'tic_tac_toe/drivers/computer_driver/center_move'
 require_relative 'tic_tac_toe/drivers/computer_driver/to_over_move'

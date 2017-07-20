@@ -11,21 +11,20 @@ describe TicTacToe::Drivers::HumanDriver do
     described_class.new(driver_env)
   end
 
-  before do
-    allow_any_instance_of(Kernel).to receive(:gets).and_return('4')
+  let :io do
+    TicTacToe::InOut
   end
 
   describe '#perform' do
     before do
-      allow(STDOUT).to receive(:puts)
+      allow(io).to receive(:output)
+      allow(io).to receive(:input).and_return('4')
     end
 
-    it 'prints the board' do
-      expect { human_driver.perform }.to output(/#{board.cells_grid}/).to_stdout
-    end
-
-    it 'prints instructions' do
-      expect { human_driver.perform }.to output(/Enter \[0-8\]/).to_stdout
+    it 'prints the board and instructions' do
+      expect(io).to receive(:output).ordered.with(/#{board.cells_grid}/)
+      expect(io).to receive(:output).ordered.with(/Enter \[0-8\]/)
+      human_driver.perform
     end
 
     it 'returns the referred cell in integer format' do

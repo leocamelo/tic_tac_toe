@@ -6,10 +6,10 @@ module TicTacToe
       end
 
       def perform
-        puts "\n#{@board.cells_grid}"
+        InOut.output("\n#{@board.cells_grid}")
 
         loop do
-          puts "\nEnter [0-8] to mark or 'q' to quit:"
+          InOut.output("\nEnter [0-8] to mark or 'q' to quit:")
           input = validated_input
           break input unless input.nil?
         end
@@ -18,7 +18,7 @@ module TicTacToe
       private
 
       def validated_input
-        self.class::InputValidator.new(gets(chomp: true), @board).call
+        self.class::InputValidator.new(InOut.input, @board).call
       end
     end
   end
