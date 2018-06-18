@@ -15,3 +15,10 @@ $ git clone https://github.com/leocamelo/tic_tac_toe.git
 $ cd tic_tac_toe
 $ bin/tic_tac_toe
 ```
+
+## Testing
+
+```bash
+$ bundle install
+$ bundle exec rspec
+```
