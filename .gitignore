@@ -1,3 +1,5 @@
 /.bundle/
 Gemfile.lock
 .DS_Store
+tags
+*.swp
