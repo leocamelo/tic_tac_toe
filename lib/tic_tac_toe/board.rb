@@ -7,13 +7,13 @@ module TicTacToe
     end
 
     def cells_grid
-      <<~EOT
-         #{@cells[0].value} | #{@cells[1].value} | #{@cells[2].value}
+      <<~TXT
+         #{cells_row(0..2)}
         ===+===+===
-         #{@cells[3].value} | #{@cells[4].value} | #{@cells[5].value}
+         #{cells_row(3..5)}
         ===+===+===
-         #{@cells[6].value} | #{@cells[7].value} | #{@cells[8].value}
-      EOT
+         #{cells_row(6..9)}
+      TXT
     end
 
     def empty_cell_at(key)
@@ -30,6 +30,12 @@ module TicTacToe
 
     def row_match?
       Board::RowMatchChecker.new(self).call
+    end
+
+    private
+
+    def cells_row(range)
+      @cells[range].map(&:value).join(' | ')
     end
   end
 end

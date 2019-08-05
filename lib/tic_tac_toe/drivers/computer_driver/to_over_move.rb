@@ -9,20 +9,17 @@ module TicTacToe
         end
 
         def call
-          cell_to_move = nil
-          @board.available_cells.each do |cell|
-            break cell_to_move = cell if test_row_match(cell, @player_marker)
-            break cell_to_move = cell if test_row_match(cell, @enemy_marker)
+          @board.available_cells.find do |cell|
+            test_match(cell, @player_marker) || test_match(cell, @enemy_marker)
           end
-          cell_to_move
         end
 
         private
 
-        def test_row_match(cell, marker)
-          row_match = @board.tap { |b| b.cells[cell].value = marker }.row_match?
+        def test_match(cell, marker)
+          cell if @board.tap { |b| b.cells[cell].value = marker }.row_match?
+        ensure
           @board.empty_cell_at(cell)
-          row_match
         end
       end
     end

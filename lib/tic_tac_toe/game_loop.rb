@@ -13,6 +13,7 @@ module TicTacToe
         current_player.perform_driver!
 
         break if current_player.gived_up?
+
         current_player.mark_board!
       end
     end

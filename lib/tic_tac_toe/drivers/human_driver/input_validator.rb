@@ -9,9 +9,10 @@ module TicTacToe
 
         def call
           input = @input.downcase
-          return :quit if input == 'q'
 
-          if input_number?(input)
+          if input == 'q'
+            :quit
+          elsif input_number?(input)
             input = @input.to_i
             input if input_on_board?(input)
           end
@@ -20,11 +21,13 @@ module TicTacToe
         private
 
         def input_number?(input)
-          true if Integer(input) rescue false
+          true if Integer(input)
+        rescue ArgumentError
+          false
         end
 
         def input_on_board?(input)
-          @cells[input] && @cells[input].empty?
+          @cells[input]&.empty?
         end
       end
     end

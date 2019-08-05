@@ -6,7 +6,7 @@ Yet another tic-tac-toe implementation. [Ruby]
 
 ## Requirements
 
-- Ruby 2.4.0 or greater ([RVM](http://rvm.io) is highly recommended)
+- Ruby 2.3.8 or greater ([RVM](http://rvm.io) is highly recommended)
 
 ## How to play
 

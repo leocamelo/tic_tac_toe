@@ -12,12 +12,10 @@ module TicTacToe
       end
 
       def perform
-        cell_to_move = nil
-        MOVES.each do |move|
-          res = move.new(@env).call
-          break cell_to_move = res unless res.nil?
+        MOVES.find do |move|
+          cell = move.new(@env).call
+          break cell unless cell.nil?
         end
-        cell_to_move
       end
     end
   end
