@@ -1,6 +1,7 @@
 # Tic-Tac-Toe
 
 [![Build Status](https://travis-ci.org/leocamelo/tic_tac_toe.svg?branch=master)](https://travis-ci.org/leocamelo/tic_tac_toe)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b60e45350c4cf2225b26/maintainability)](https://codeclimate.com/github/leocamelo/tic_tac_toe/maintainability)
 
 Yet another tic-tac-toe implementation. [Ruby]
 
