@@ -6,22 +6,28 @@ module TicTacToe
     end
 
     def perform
-      loop do
-        break if game_over?
-
-        current_player = @turns_manager.current_player
-        current_player.perform_driver!
-
-        break if current_player.gived_up?
-
-        current_player.mark_board!
-      end
+      game_turn! until game_over? || player_gived_up?
     end
 
     private
 
+    def game_turn!
+      current_player = @turns_manager.current_player
+      current_player.perform_driver!
+
+      if current_player.gived_up?
+        @player_gived_up = true
+      else
+        current_player.mark_board!
+      end
+    end
+
     def game_over?
       @board.row_match? || @board.full?
+    end
+
+    def player_gived_up?
+      !@player_gived_up.nil?
     end
   end
 end
