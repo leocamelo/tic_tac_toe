@@ -1,7 +1,7 @@
 module TicTacToe
   class InOut
     def self.input
-      gets(chomp: true)
+      gets.chomp
     end
 
     def self.output(str)
