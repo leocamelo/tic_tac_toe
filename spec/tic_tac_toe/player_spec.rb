@@ -4,29 +4,12 @@ describe TicTacToe::Player do
   end
 
   let :player do
-    described_class.new(board, TicTacToe::Markers::X, driver_double)
+    described_class.new(TicTacToe::Markers::X, double_driver)
   end
 
-  describe '#mark_board!' do
-    context 'performing the driver' do
-      before do
-        player.perform_driver!
-        player.mark_board!
-      end
-
-      it 'mark a cell on board' do
-        expect(board.cells[0].value).to eq(TicTacToe::Markers::X)
-      end
-    end
-
-    context 'without performing the driver' do
-      before do
-        player.mark_board!
-      end
-
-      it 'dont mark any cell on board' do
-        expect(board.cells).to all(be_empty)
-      end
+  describe '#play' do
+    it 'performs driver' do
+      expect(player.play(board, TicTacToe::Markers::O)).to eq(1)
     end
   end
 end

@@ -2,16 +2,14 @@ require 'rspec'
 require './lib/tic_tac_toe'
 
 module SpecHelper
-  def driver_double
-    Struct.new(:env) do
-      def perform
-        env.board.available_cells.first
-      end
+  class DoubleDriver
+    def perform(board, _player_marker, _enemy_marker)
+      board.empty_cells.first
     end
   end
 
-  def fill_board(board, cells, marker)
-    cells.times { |n| board.cells[n].value = marker }
+  def double_driver
+    DoubleDriver.new
   end
 end
 

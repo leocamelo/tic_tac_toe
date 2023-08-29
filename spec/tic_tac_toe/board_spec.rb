@@ -1,98 +1,113 @@
 describe TicTacToe::Board do
+  let :marker do
+    [TicTacToe::Markers::X, TicTacToe::Markers::O].sample
+  end
+
   let :board do
     described_class.new
   end
 
-  describe '#cells_grid' do
-    context 'when board is empty' do
-      let :empty_board_cells_grid do
-        <<~TXT
-           0 | 1 | 2
-          ===+===+===
-           3 | 4 | 5
-          ===+===+===
-           6 | 7 | 8
-        TXT
-      end
+  describe '#empty_cells' do
+    before do
+      board.mark_cell!(5, marker)
+    end
 
-      it 'returns an empty board grid' do
-        expect(board.cells_grid).to eq(empty_board_cells_grid)
+    it 'returns all empty cell keys' do
+      expect(board.empty_cells).to eq([1, 2, 3, 4, 6, 7, 8, 9])
+    end
+  end
+
+  describe '#empty_cell?' do
+    context 'when pointed cell is empty' do
+      it 'returns true' do
+        expect(board).to be_empty_cell(1)
       end
     end
 
-    context 'when board have marks' do
+    context 'when pointed cell is not empty' do
       before do
-        board.cells[2].value = TicTacToe::Markers::X
-        board.cells[4].value = TicTacToe::Markers::O
+        board.mark_cell!(1, marker)
       end
 
-      let :marked_board_cells_grid do
-        <<~TXT
-           0 | 1 | X
-          ===+===+===
-           3 | O | 5
-          ===+===+===
-           6 | 7 | 8
-        TXT
-      end
-
-      it 'returns the marked board grid' do
-        expect(board.cells_grid).to eq(marked_board_cells_grid)
+      it 'returns false' do
+        expect(board).not_to be_empty_cell(1)
       end
     end
   end
 
-  describe '#empty_cell_at' do
-    before do
-      board.cells[4].value = TicTacToe::Markers::X
-      board.empty_cell_at(4)
-    end
-
-    it 'return back the referred cell to empty value' do
-      expect(board.cells[4]).to be_empty
-    end
-  end
-
-  describe '#available_cells' do
-    before do
-      board.cells[4].value = TicTacToe::Markers::X
-    end
-
-    it 'returns all empty cells indexes' do
-      expect(board.available_cells).to eq([0, 1, 2, 3, 5, 6, 7, 8])
+  describe '#mark_cell!' do
+    it 'fill a pointed cell' do
+      expect(board).to be_empty_cell(1)
+      board.mark_cell!(1, marker)
+      expect(board).not_to be_empty_cell(1)
     end
   end
 
   describe '#full?' do
     context 'when the board is not fully marked' do
       before do
-        fill_board(board, 8, TicTacToe::Markers::X)
+        8.times { |n| board.mark_cell!(n + 1, marker) }
       end
 
       it 'checks and returns false' do
-        expect(board.full?).to eq(false)
+        expect(board).not_to be_full
       end
     end
 
     context 'when the board is fully marked' do
       before do
-        fill_board(board, 9, TicTacToe::Markers::X)
+        9.times { |n| board.mark_cell!(n + 1, marker) }
       end
 
       it 'checks and returns true' do
-        expect(board.full?).to eq(true)
+        expect(board).to be_full
       end
     end
   end
 
   describe '#row_match?' do
-    let :row_match_checker do
-      described_class::RowMatchChecker
+    context 'when board haven\'t a combination' do
+      before do
+        2.times { |n| board.mark_cell!(n + 1, marker) }
+      end
+
+      it 'checks and returns false' do
+        expect(board).not_to be_row_match
+      end
     end
 
-    it 'calls the RowMatchChecker class' do
-      expect_any_instance_of(row_match_checker).to receive(:call).once
-      board.row_match?
+    context 'when board have a combination' do
+      before do
+        3.times { |n| board.mark_cell!(n + 1, marker) }
+      end
+
+      it 'checks and returns true' do
+        expect(board).to be_row_match
+      end
+    end
+  end
+
+  describe '#clone' do
+    it 'returns a fresh board copy' do
+      board_clone = board.clone
+      board_clone.mark_cell!(1, marker)
+
+      expect(board).to be_empty_cell(1)
+      expect(board_clone).not_to be_empty_cell(1)
+    end
+  end
+
+  describe '#to_grid' do
+    it 'returns cells state as grid matrix' do
+      board.mark_cell!(3, marker)
+
+      grid = [
+        %W[1 2 #{marker}],
+        %w[4 5 6],
+        %w[7 8 9]
+      ]
+
+      expect(board.to_grid).to eq(grid)
     end
   end
 end

@@ -2,14 +2,15 @@ module TicTacToe
   class Game
     def initialize
       @board = Board.new
-      @player1 = Player.new(@board, Markers::O, Drivers::HumanDriver)
-      @player2 = Player.new(@board, Markers::X, Drivers::ComputerDriver)
+      @player1 = Player.new(Markers::O, Drivers::HumanDriver.new)
+      @player2 = Player.new(Markers::X, Drivers::RobotDriver.new)
     end
 
     def run
-      InOut.output("Tic-Tac-Toe! (v#{VERSION})\n")
+      Face.output("Tic-Tac-Toe! (v#{VERSION})")
       GameLoop.new(@board, @player1, @player2).perform
-      InOut.output("\n#{@board.cells_grid}\nGame over")
+      Face.draw_board(@board.to_grid)
+      Face.output('Game over')
     end
   end
 end

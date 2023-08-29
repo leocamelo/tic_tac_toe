@@ -1,27 +1,25 @@
 module TicTacToe
   class Board
-    attr_reader :cells
+    HORIZONTAL_MATCH_ROWS = [[0, 1, 2], [3, 4, 5], [6, 7, 8]].freeze
+    VERTICAL_MATCH_ROWS = [[0, 3, 6], [1, 4, 7], [2, 5, 8]].freeze
+    CROSS_MATCH_ROWS = [[0, 4, 8], [2, 4, 6]].freeze
 
-    def initialize
-      @cells = Array.new(9) { |n| Cell.new(n) }.freeze
+    MATCH_ROWS = HORIZONTAL_MATCH_ROWS + VERTICAL_MATCH_ROWS + CROSS_MATCH_ROWS
+
+    def initialize(cells = nil)
+      @cells = cells || Array.new(9) { |n| Cell.new(n + 1) }.freeze
     end
 
-    def cells_grid
-      <<~TXT
-         #{cells_row(0..2)}
-        ===+===+===
-         #{cells_row(3..5)}
-        ===+===+===
-         #{cells_row(6..9)}
-      TXT
-    end
-
-    def empty_cell_at(key)
-      @cells[key].value = key
-    end
-
-    def available_cells
+    def empty_cells
       @cells.select(&:empty?).map { |c| c.value.to_i }
+    end
+
+    def empty_cell?(key)
+      @cells[key - 1].empty?
+    end
+
+    def mark_cell!(key, mark)
+      @cells[key - 1].value = mark
     end
 
     def full?
@@ -29,13 +27,15 @@ module TicTacToe
     end
 
     def row_match?
-      Board::RowMatchChecker.new(self).call
+      MATCH_ROWS.any? { |r| r.map { |c| @cells[c].value }.uniq.size == 1 }
     end
 
-    private
+    def clone
+      self.class.new(@cells.map(&:clone))
+    end
 
-    def cells_row(range)
-      @cells[range].map(&:value).join(' | ')
+    def to_grid
+      @cells.map(&:value).each_slice(3).to_a
     end
   end
 end

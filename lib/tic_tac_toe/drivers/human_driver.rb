@@ -1,24 +1,32 @@
 module TicTacToe
   module Drivers
     class HumanDriver
-      def initialize(env)
-        @board = env.board
-      end
+      QUIT_SIGNAL = 'q'.freeze
 
-      def perform
-        InOut.output("\n#{@board.cells_grid}")
+      def perform(board, _player_marker, _enemy_marker)
+        Face.draw_board(board.to_grid)
 
         loop do
-          InOut.output("\nEnter [0-8] to mark or 'q' to quit:")
-          input = validated_input
-          break input unless input.nil?
+          Face.output('Enter [0-8] to mark or "q" to quit:')
+
+          raw_input = Face.input
+          break if raw_input.downcase == QUIT_SIGNAL
+
+          input = parse_input(raw_input)
+          break input if input && input_available?(board, input)
         end
       end
 
       private
 
-      def validated_input
-        self.class::InputValidator.new(InOut.input, @board).call
+      def parse_input(raw_input)
+        Integer(raw_input)
+      rescue ArgumentError
+        nil
+      end
+
+      def input_available?(board, input)
+        board.empty_cells.include?(input)
       end
     end
   end

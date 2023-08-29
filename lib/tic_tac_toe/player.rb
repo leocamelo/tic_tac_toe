@@ -1,40 +1,14 @@
 module TicTacToe
   class Player
-    def initialize(board, marker, driver)
-      @board = board
+    attr_reader :marker
+
+    def initialize(marker, driver)
       @marker = marker
-      @driver = driver.new(driver_env)
-
-      @next_play = nil
-      @gived_up = false
+      @driver = driver
     end
 
-    def perform_driver!
-      play = @driver.perform
-
-      if play == :quit
-        @gived_up = true
-        @next_play = nil
-      else
-        @next_play = play
-      end
-    end
-
-    def mark_board!
-      return if @next_play.nil?
-
-      @board.cells[@next_play].value = @marker
-      @next_play = nil
-    end
-
-    def gived_up?
-      @gived_up
-    end
-
-    private
-
-    def driver_env
-      Player::DriverEnv.new(@board, @marker)
+    def play(board, enemy_marker)
+      @driver.perform(board.clone, @marker, enemy_marker)
     end
   end
 end

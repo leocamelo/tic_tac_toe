@@ -3,32 +3,36 @@ describe TicTacToe::Drivers::HumanDriver do
     TicTacToe::Board.new
   end
 
-  let :driver_env do
-    TicTacToe::Player::DriverEnv.new(board, TicTacToe::Markers::X)
+  let :player_marker do
+    TicTacToe::Markers::X
   end
 
-  let :human_driver do
-    described_class.new(driver_env)
+  let :enemy_marker do
+    TicTacToe::Markers::O
   end
 
-  let :io do
-    TicTacToe::InOut
+  let :driver do
+    described_class.new
+  end
+
+  let :face do
+    TicTacToe::Face
   end
 
   describe '#perform' do
     before do
-      allow(io).to receive(:output)
-      allow(io).to receive(:input).and_return('4')
+      allow(face).to receive(:output)
+      allow(face).to receive(:input).and_return('5')
     end
 
     it 'prints the board and instructions' do
-      expect(io).to receive(:output).ordered.with(/#{board.cells_grid}/)
-      expect(io).to receive(:output).ordered.with(/Enter \[0-8\]/)
-      human_driver.perform
+      expect(face).to receive(:draw_board).ordered.with(board.to_grid)
+      expect(face).to receive(:output).ordered.with(/Enter \[0-8\]/)
+      driver.perform(board, player_marker, enemy_marker)
     end
 
     it 'returns the referred cell in integer format' do
-      expect(human_driver.perform).to eq(4)
+      expect(driver.perform(board, player_marker, enemy_marker)).to eq(5)
     end
   end
 end

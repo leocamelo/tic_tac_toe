@@ -1,14 +1,18 @@
-describe TicTacToe::Drivers::ComputerDriver do
+describe TicTacToe::Drivers::RobotDriver do
   let :board do
     TicTacToe::Board.new
   end
 
-  let :driver_env do
-    TicTacToe::Player::DriverEnv.new(board, TicTacToe::Markers::X)
+  let :player_marker do
+    TicTacToe::Markers::X
   end
 
-  let :computer_driver do
-    described_class.new(driver_env)
+  let :enemy_marker do
+    TicTacToe::Markers::O
+  end
+
+  let :driver do
+    described_class.new
   end
 
   describe '#perform' do
@@ -22,13 +26,13 @@ describe TicTacToe::Drivers::ComputerDriver do
       end
 
       it 'calls the center_move and returns his strategy' do
-        expect(computer_driver.perform).to eq('Center!')
+        expect(driver.perform(board, player_marker, enemy_marker)).to eq('Center!')
       end
     end
 
     context 'when the board\'s center cell is not empty' do
       before do
-        board.cells[4].value = TicTacToe::Markers::O
+        board.mark_cell!(5, enemy_marker)
       end
 
       context 'when board have combinations to match' do
@@ -37,12 +41,12 @@ describe TicTacToe::Drivers::ComputerDriver do
         end
 
         before do
-          board.cells[3].value = TicTacToe::Markers::O
+          board.mark_cell!(4, enemy_marker)
           allow_any_instance_of(move).to receive(:call).and_return('ToOver!')
         end
 
         it 'calls the to_over_move and returns his strategy' do
-          expect(computer_driver.perform).to eq('ToOver!')
+          expect(driver.perform(board, player_marker, enemy_marker)).to eq('ToOver!')
         end
       end
 
@@ -57,17 +61,18 @@ describe TicTacToe::Drivers::ComputerDriver do
           end
 
           it 'calls the random_move and returns his strategy' do
-            expect(computer_driver.perform).to eq('Random!')
+            expect(driver.perform(board, player_marker, enemy_marker)).to eq('Random!')
           end
         end
 
         context 'when board haven\'t available cells' do
           before do
-            fill_board(board, 9, TicTacToe::Markers::O)
+            markers = [player_marker, enemy_marker].shuffle
+            9.times { |n| board.mark_cell!(n + 1, markers[n % markers.size]) }
           end
 
           it 'verify and returns nil' do
-            expect(computer_driver.perform).to be_nil
+            expect(driver.perform(board, player_marker, enemy_marker)).to be_nil
           end
         end
       end

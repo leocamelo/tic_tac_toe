@@ -14,13 +14,20 @@ describe TicTacToe::Cell do
   end
 
   describe '#empty?' do
-    let :empty_checker do
-      described_class::EmptyChecker
+    context 'when cell have a marker as value' do
+      before do
+        cell.value = TicTacToe::Markers::X
+      end
+
+      it 'returns false' do
+        expect(cell).not_to be_empty
+      end
     end
 
-    it 'calls the EmptyChecker class' do
-      expect_any_instance_of(empty_checker).to receive(:call).once
-      cell.empty?
+    context 'when cell haven\'t a marker as value' do
+      it 'returns true' do
+        expect(cell).to be_empty
+      end
     end
   end
 end

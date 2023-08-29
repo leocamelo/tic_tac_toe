@@ -4,11 +4,11 @@ describe TicTacToe::GameLoop do
   end
 
   let :player1 do
-    TicTacToe::Player.new(board, TicTacToe::Markers::X, driver_double)
+    TicTacToe::Player.new(TicTacToe::Markers::X, double_driver)
   end
 
   let :player2 do
-    TicTacToe::Player.new(board, TicTacToe::Markers::O, driver_double)
+    TicTacToe::Player.new(TicTacToe::Markers::O, double_driver)
   end
 
   let :game_loop do

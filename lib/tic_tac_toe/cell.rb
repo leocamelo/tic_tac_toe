@@ -11,7 +11,7 @@ module TicTacToe
     end
 
     def empty?
-      Cell::EmptyChecker.new(self).call
+      ![Markers::X, Markers::O].include?(@value)
     end
   end
 end

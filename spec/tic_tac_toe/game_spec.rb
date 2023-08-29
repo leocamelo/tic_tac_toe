@@ -3,19 +3,21 @@ describe TicTacToe::Game do
     described_class.new
   end
 
-  let :io do
-    TicTacToe::InOut
+  let :face do
+    TicTacToe::Face
   end
 
   describe '#run' do
     before do
-      allow(io).to receive(:output)
-      allow_any_instance_of(TicTacToe::GameLoop).to receive(:perform)
+      allow(face).to receive(:output)
     end
 
     it 'prints the game title and game over message' do
-      expect(io).to receive(:output).with(/Tic-Tac-Toe/)
-      expect(io).to receive(:output).with(/Game over/)
+      allow_any_instance_of(TicTacToe::GameLoop).to receive(:perform)
+
+      expect(face).to receive(:output).with(/Tic-Tac-Toe/)
+      expect(face).to receive(:output).with(/Game over/)
+
       game.run
     end
 
