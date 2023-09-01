@@ -1,4 +1,4 @@
-describe TicTacToe::Drivers::RobotDriver::RandomMove do
+describe TicTacToe::Drivers::RobotDriverMoveset::RandomMove do
   let :board do
     TicTacToe::Board.new
   end

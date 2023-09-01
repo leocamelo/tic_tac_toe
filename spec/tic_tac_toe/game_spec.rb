@@ -1,22 +1,26 @@
 describe TicTacToe::Game do
-  let :game do
-    described_class.new
+  let :face do
+    TicTacToe::Faces::TermFace
   end
 
-  let :face do
-    TicTacToe::Face
+  let :driver do
+    TicTacToe::Drivers::BaseDriver
+  end
+
+  let :game do
+    described_class.new(face, driver, driver)
   end
 
   describe '#run' do
     before do
-      allow(face).to receive(:output)
+      allow_any_instance_of(face).to receive(:output)
     end
 
     it 'prints the game title and game over message' do
       allow_any_instance_of(TicTacToe::GameLoop).to receive(:perform)
 
-      expect(face).to receive(:output).with(/Tic-Tac-Toe/)
-      expect(face).to receive(:output).with(/Game over/)
+      expect_any_instance_of(face).to receive(:output).with(/Tic-Tac-Toe/)
+      expect_any_instance_of(face).to receive(:output).with(/Game over/)
 
       game.run
     end

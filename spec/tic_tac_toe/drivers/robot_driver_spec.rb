@@ -12,13 +12,13 @@ describe TicTacToe::Drivers::RobotDriver do
   end
 
   let :driver do
-    described_class.new
+    described_class.new(nil)
   end
 
   describe '#perform' do
     context 'when the board\'s center cell is empty' do
       let :move do
-        described_class::CenterMove
+        TicTacToe::Drivers::RobotDriverMoveset::CenterMove
       end
 
       before do
@@ -37,7 +37,7 @@ describe TicTacToe::Drivers::RobotDriver do
 
       context 'when board have combinations to match' do
         let :move do
-          described_class::ToOverMove
+          TicTacToe::Drivers::RobotDriverMoveset::ToOverMove
         end
 
         before do
@@ -53,7 +53,7 @@ describe TicTacToe::Drivers::RobotDriver do
       context 'when board haven\'t combinations to match' do
         context 'when board have available cells' do
           let :move do
-            described_class::RandomMove
+            TicTacToe::Drivers::RobotDriverMoveset::RandomMove
           end
 
           before do

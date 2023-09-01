@@ -1,13 +1,15 @@
 module TicTacToe
   module Drivers
-    class RobotDriver
-      class RandomMove
+    module RobotDriverMoveset
+      class CenterMove
+        TARGET = 5
+
         def initialize(board, _player_marker, _enemy_marker)
           @board = board
         end
 
         def call
-          @board.empty_cells.sample
+          TARGET if @board.empty_cell?(TARGET)
         end
       end
     end

@@ -1,6 +1,6 @@
 module TicTacToe
   module Drivers
-    class RobotDriver
+    module RobotDriverMoveset
       class ToOverMove
         def initialize(board, player_marker, enemy_marker)
           @board = board

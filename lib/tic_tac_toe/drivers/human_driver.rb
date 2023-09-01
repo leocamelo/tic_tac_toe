@@ -1,15 +1,15 @@
 module TicTacToe
   module Drivers
-    class HumanDriver
+    class HumanDriver < BaseDriver
       QUIT_SIGNAL = 'q'.freeze
 
       def perform(board, _player_marker, _enemy_marker)
-        Face.draw_board(board.to_grid)
+        @face.draw_board(board.to_grid)
 
         loop do
-          Face.output('Enter [0-8] to mark or "q" to quit:')
+          @face.output('Enter [0-8] to mark or "q" to quit:')
 
-          raw_input = Face.input
+          raw_input = @face.input
           break if raw_input.downcase == QUIT_SIGNAL
 
           input = parse_input(raw_input)

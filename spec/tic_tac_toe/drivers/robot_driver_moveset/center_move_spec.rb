@@ -1,4 +1,4 @@
-describe TicTacToe::Drivers::RobotDriver::CenterMove do
+describe TicTacToe::Drivers::RobotDriverMoveset::CenterMove do
   let :board do
     TicTacToe::Board.new
   end

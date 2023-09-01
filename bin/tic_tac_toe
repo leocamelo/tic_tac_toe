@@ -1,4 +1,10 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/tic_tac_toe'
-TicTacToe::Game.new.run
+
+face = TicTacToe::Faces::TermFace
+player1_driver = TicTacToe::Drivers::HumanDriver
+player2_driver = TicTacToe::Drivers::RobotDriver
+
+game = TicTacToe::Game.new(face, player1_driver, player2_driver)
+game.run

@@ -1,10 +1,10 @@
 module TicTacToe
   module Drivers
-    class RobotDriver
+    class RobotDriver < BaseDriver
       MOVESET = [
-        self::CenterMove,
-        self::ToOverMove,
-        self::RandomMove
+        RobotDriverMoveset::CenterMove,
+        RobotDriverMoveset::ToOverMove,
+        RobotDriverMoveset::RandomMove
       ].freeze
 
       def perform(board, player_marker, enemy_marker)

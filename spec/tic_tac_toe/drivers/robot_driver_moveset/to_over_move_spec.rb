@@ -1,4 +1,4 @@
-describe TicTacToe::Drivers::RobotDriver::ToOverMove do
+describe TicTacToe::Drivers::RobotDriverMoveset::ToOverMove do
   let :board do
     TicTacToe::Board.new
   end

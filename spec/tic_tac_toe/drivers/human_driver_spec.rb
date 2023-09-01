@@ -11,12 +11,12 @@ describe TicTacToe::Drivers::HumanDriver do
     TicTacToe::Markers::O
   end
 
-  let :driver do
-    described_class.new
+  let :face do
+    TicTacToe::Faces::TermFace.new
   end
 
-  let :face do
-    TicTacToe::Face
+  let :driver do
+    described_class.new(face)
   end
 
   describe '#perform' do
