@@ -9,8 +9,8 @@ module TicTacToe
         puts("\n#{str}")
       end
 
-      def draw_board(board)
-        rows = board.map { |r| r.map { |c| " #{c} " }.join('|') }
+      def draw_board(board_matrix)
+        rows = board_matrix.map { |r| r.map { |c| " #{c} " }.join('|') }
         output(rows.join("\n---+---+---\n"))
       end
     end
